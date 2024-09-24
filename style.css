@@ -1,6 +1,6 @@
 body {
     font-family: Arial, serif;
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 .header {
@@ -60,29 +60,25 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    background-color: #11307e;
-    color: white;
+    border: 2px solid black;
+    padding: 20px;
 }
 
 .footer a {
-    color: white;
 }
 
 
 .footer_block {
     display: flex;
     flex-direction: column;
-    margin: 50px;
 }
 
 .recipe_card {
     border: 2px solid black;
     border-radius: 5px;
     padding: 5px;
-
-
 }
+
 .recipe_card img {
     width: 100%;  /* Зображення займає 100% ширини контейнера */
     height: auto; /* Зберігається пропорційність зображення */
