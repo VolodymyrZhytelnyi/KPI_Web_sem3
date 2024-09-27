@@ -10,6 +10,10 @@ body {
     align-items: center; /* Вертикальне центрування всіх елементів */
 }
 
+.header img {
+    width: 25%;
+}
+
 .menu {
     display: flex;
     flex-direction: row;
@@ -17,7 +21,7 @@ body {
     gap: 30px;
 }
 
-.main {
+.content {
     display: flex;
     width: 100%;
 
@@ -26,28 +30,35 @@ body {
 .sidebar {
     width: 15%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
-    border: 1px solid black;
-    margin-right: 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-right: 10px;
     padding: 20px;
 }
+
+.sidebar a {
+    padding: 5px;
+}
+
+
 
 
 .sidebar a:hover {
     color: blue;
 }
 
-.content {
+.main {
     width: 75%;
     max-width: 75%;
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(3, minmax(1px, 1fr)); /* Три колонки, мінімум 150px кожна */
+    grid-template-columns: repeat(3, minmax(1px, 1fr));
     gap: 10px;
-    width: 100%; /* Додаємо ширину в 100%, щоб сітка адаптувалась */
+    width: 100%;
     overflow: hidden; /* Запобігаємо виходу контенту за межі контейнера */
 
 }
@@ -56,21 +67,40 @@ body {
     transform: scale(1.05);
 }
 
+.tips {
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.tips_card {
+    display: flex;
+    align-items: center;
+}
+
+.tips img {
+    width: 30%;
+    height: 100%;
+}
+
+.tips_card_text_block {
+    width: 50%;
+}
+
 .footer {
+    margin-top: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     border: 2px solid black;
     padding: 20px;
 }
 
-.footer a {
-}
-
-
 .footer_block {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .recipe_card {
@@ -80,71 +110,69 @@ body {
 }
 
 .recipe_card img {
-    width: 100%;  /* Зображення займає 100% ширини контейнера */
-    height: auto; /* Зберігається пропорційність зображення */
-    object-fit: cover; /* Зображення масштабується, щоб заповнити контейнер */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-/* Медіа-запит для мобільних пристроїв */
-@media only screen and (max-width: 768px) {
 
-    /* Приховуємо sidebar */
+.lds-grid {
+    color: #1c4c5b;
+}
+
+.lds-grid,
+.lds-grid div {
+    box-sizing: border-box;
+}
+
+/* Контейнер */
+.lds-grid {
+    display: inline-block;
+    position: relative;
+    width: 20vw;
+    height: 20vw;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 80px;
+    min-height: 80px;
+}
+
+/* Точка */
+.lds-grid div {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    background: currentColor;
+    animation: lds-grid 1.2s linear infinite;
+}
+
+.lds-grid div:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.lds-grid div:nth-child(2) { top: 10%; left: 40%; animation-delay: -0.4s; }
+.lds-grid div:nth-child(3) { top: 10%; left: 70%; animation-delay: -0.8s; }
+.lds-grid div:nth-child(4) { top: 40%; left: 10%; animation-delay: -0.4s; }
+.lds-grid div:nth-child(5) { top: 40%; left: 40%; animation-delay: -0.8s; }
+.lds-grid div:nth-child(6) { top: 40%; left: 70%; animation-delay: -1.2s; }
+.lds-grid div:nth-child(7) { top: 70%; left: 10%; animation-delay: -0.8s; }
+.lds-grid div:nth-child(8) { top: 70%; left: 40%; animation-delay: -1.2s; }
+.lds-grid div:nth-child(9) { top: 70%; left: 70%; animation-delay: -1.6s; }
+
+@keyframes lds-grid {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@media screen {
     .sidebar {
         display: none;
     }
 
-    /* Контент займає всю ширину */
-    .content {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    /* Cards займають всю ширину */
-    .cards {
-        grid-template-columns: repeat(2, 1fr); /* Дві картки в рядок на маленьких екранах */
-        gap: 10px;
-    }
-
-    .recipe_card img {
-        height: auto; /* Забезпечуємо масштабування зображення для мобільних */
-    }
-
-    /* Виправляємо меню для мобільних пристроїв */
-    .menu {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .menu a {
-        font-size: 4vw; /* Збільшуємо шрифт на мобільних пристроях */
-    }
-
-    /* Адаптуємо зображення в header */
-    .header img {
-        max-width: 150px;
-    }
+    .
 }
 
-/*!* Стилі для маленьких планшетів (екран до 1024px шириною) *!*/
-/*@media only screen and (max-width: 1024px) {*/
 
-/*    !* Sidebar займає менше місця, але все ще відображається *!*/
-/*    .sidebar {*/
-/*        width: 20%;*/
-/*    }*/
-
-/*    !* Контент також адаптується *!*/
-/*    .content {*/
-/*        width: 80%;*/
-/*    }*/
-
-/*    !* Cards займають дві колонки замість трьох *!*/
-/*    .cards {*/
-/*        grid-template-columns: repeat(1, 1fr);*/
-/*    }*/
-
-/*    .menu a {*/
-/*        font-size: 3vw; !* Зменшуємо шрифт для планшетів *!*/
-/*    }*/
-/*}*/
 
