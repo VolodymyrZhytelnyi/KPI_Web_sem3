@@ -60,7 +60,6 @@ body {
     gap: 10px;
     width: 100%;
     overflow: hidden; /* Запобігаємо виходу контенту за межі контейнера */
-
 }
 
 .cards img:hover {
@@ -164,14 +163,6 @@ body {
     50% {
         opacity: 0.5;
     }
-}
-
-@media screen {
-    .sidebar {
-        display: none;
-    }
-
-    .
 }
 
 
