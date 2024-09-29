@@ -23,9 +23,9 @@ body {
 
 .content {
     display: flex;
-    width: 100%;
-
+    justify-content: center;
 }
+
 
 .sidebar {
     width: 15%;
@@ -50,8 +50,8 @@ body {
 }
 
 .main {
-    width: 75%;
-    max-width: 75%;
+    width: 85%;
+    max-width: 85%;
 }
 
 .cards {
@@ -162,6 +162,20 @@ body {
     }
     50% {
         opacity: 0.5;
+    }
+}
+
+
+@media (max-width: 720px){
+    .sidebar{
+        display: none;
+    }
+    .main {
+        width: 100%;
+        max-width: 100%;
+            }
+    .cards {
+        grid-template-columns: repeat(2, minmax(1px, 1fr));
     }
 }
 

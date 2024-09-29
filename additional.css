@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, serif;
+    font-size: 2.5vw;
+}
+
+.form {
+    margin: 1vw;
+}
+
+
+.answer {
+    font-size: 0.7em;
+}
+
+.answer::before {
+    content: "--------";
+}
+
+.table_container {
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1vw;
+}
+
+.table_container img {
+    width: auto;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Видаляє проміжки між клітинками */
+}
+
+th, td {
+    width: 150px; /* Фіксована ширина для клітинки */
+    height: 30px; /* Фіксована висота для клітинки */
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th img {
+
+}
