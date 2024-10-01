@@ -16,32 +16,32 @@ body {
     content: "--------";
 }
 
-.table_container {
-    max-width: 100%;
-    overflow-x: auto;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: 1vw;
+.content {
 }
 
-.table_container img {
-    width: auto;
-    height: 100%;
+.table_container {
+    overflow-x: scroll;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse; /* Видаляє проміжки між клітинками */
+    border: 2px solid black;
+    border-radius: 5px;
+
+    border-collapse: separate;
+    margin: 10px;
+
+    min-width: max-content;
 }
 
-th, td {
-    width: 150px; /* Фіксована ширина для клітинки */
-    height: 30px; /* Фіксована висота для клітинки */
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #ddd;
+th {
+    position: sticky;
+    top: 0;
 }
 
-th img {
+td {
+    border: 2px solid black;
+    border-radius: 5px;
 
 }
+
+
