@@ -3,11 +3,90 @@ body {
     font-size: 2.5vw;
 }
 
+.icon img {
+    width: 64px;
+    height: 64px;
+}
+
+/* || FORM STYLES*/
 .form {
     margin: 1vw;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+/* || CONTENT STYLES*/
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+/* || TABLE STYLES */
+.table_container {
+    overflow-x: auto; /* Додає горизонтальну прокрутку */
+    width: 100%;
+}
+
+table {
+    border: 2px solid black;
+    border-radius: 5px;
+    border-collapse: separate;
+    margin: 10px;
+
+}
+
+th {
+    position: sticky;
+    top: 0;
+}
+
+thead tr {
+    background-color: #dedddd;
+}
+
+/* || TABLE CELLS STYLES */
+td {
+    border-radius: 5px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* || BUTTONS STYLES */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-size: 2vw;
+}
+
+/* || FAQ STYLES*/
+.text_box {
+    width: 70%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* || REGISTRATION STYLES*/
+.registration_box {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+
+    column-count: 2;
 }
 
 
+/* || SPECIFIC STYLES */
 .answer {
     font-size: 0.7em;
 }
@@ -16,32 +95,49 @@ body {
     content: "--------";
 }
 
-.content {
+@media only screen and (max-width: 769px)  {
+
+
+
+    /* || ADMIN PANEL*/
+    .table_container {
+        overflow-x: auto; /* Для горизонтальної прокрутки */
+    }
+
+    table {
+        display: block;
+        min-width: max-content !important; /* Встановлюємо важливий пріоритет */
+        overflow-x: auto;
+        width: auto; /* Таблиця адаптується під вміст */
+    }
+
+    .icon img {
+        width: 32px;
+        height: 32px;
+    }
+
+    td, th {
+        font-size: 3vw;
+    }
+
+    /* || FAQ*/
+    .text_box {
+        width: 90%;
+        font-size: 4vw;
+    }
+
+    /* || REGISTRATION*/
+    .registration_box {
+        column-count: 1;
+        width: 100%;
+        font-size: 5vw;
+    }
+
+    /* || AUTHORISATION*/
+    .form {
+        width: 90%;
+        font-size: 5vw;
+    }
+
+
 }
-
-.table_container {
-    overflow-x: scroll;
-}
-
-table {
-    border: 2px solid black;
-    border-radius: 5px;
-
-    border-collapse: separate;
-    margin: 10px;
-
-    min-width: max-content;
-}
-
-th {
-    position: sticky;
-    top: 0;
-}
-
-td {
-    border: 2px solid black;
-    border-radius: 5px;
-
-}
-
-
