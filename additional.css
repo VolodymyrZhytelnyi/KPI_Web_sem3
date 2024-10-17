@@ -11,9 +11,7 @@ body {
 /* || FORM STYLES*/
 .form {
     margin: 1vw;
-    border: 2px solid black;
     padding: 5px;
-    border-radius: 10px;
 }
 
 /* || CONTENT STYLES*/
@@ -76,13 +74,17 @@ button {
     padding: 5px;
 }
 
-/* || REGISTRATION STYLES*/
+/* || BOXES*/
 .registration_box {
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
-
     column-count: 2;
+}
+
+.authorization_box {
+    border-radius: 10px;
+    border: 2px solid black;
 }
 
 
@@ -93,6 +95,14 @@ button {
 
 .answer::before {
     content: "--------";
+}
+
+.radio_box {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1rem;
+
 }
 
 @media only screen and (max-width: 769px)  {

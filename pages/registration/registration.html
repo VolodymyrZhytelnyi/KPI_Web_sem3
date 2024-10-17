@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../../additional.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script src="js.js"></script>
+</head>
+<body>
+<div class="content">
+    <div class="registration_box">
+        <form action="/register">
+            <div class="form">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email"><br>
+            </div>
+
+            <div class="form">
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password"><br>
+            </div>
+
+            <div class="form">
+                <label for="surname">Surname</label><br>
+                <input type="text" id="surname" name="surname"><br>
+            </div>
+
+            <div class="form">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name"><br>
+            </div>
+
+            <div class="form">
+                <label for="middle_name">Middle name</label><br>
+                <input type="text" id="middle_name" name="middle_name"><br>
+            </div>
+
+            <div class="form">
+                <label>Gender</label><br>
+                <div class="radio_box">
+                    <label for="Male">Male</label>
+                    <input type="radio" id="Male" name="gender" value="Male">
+                    <label for="Female">Female</label>
+                    <input type="radio" id="Female" name="gender" value="Female">
+                </div>
+            </div>
+
+            <div class="form">
+
+                <div class="phone_form">
+                    <label for="phone_num">Phone number</label>
+                    <input type="text" id="phone_num" placeholder="+38(0__)-___-__-__">
+
+                    <script>
+                        $(document).ready(function(){
+                            $('#phone_num').mask('+38(000)-000-00-00'); // Маска для номера
+                        });
+                    </script>
+
+
+                </div>
+            </div>
+
+            <div class="form">
+                <label for="date">Birthday date</label><br>
+                <input type="date" id="date" name="date"><br>
+            </div>
+
+            <div class="form">
+                <label for="group">Group</label><br>
+                <select id="group" name="group">
+                    <option value="option1">Group 1</option>
+                    <option value="option2">Group 2</option>
+                    <option value="option3">Group 3</option>
+                    <option value="option4">Group 4</option>
+                </select><br>
+            </div>
+
+            <div class="form">
+                <label for="file">File</label><br>
+                <input type="file" id="File" name="File"><br>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
