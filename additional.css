@@ -12,17 +12,19 @@ body {
 .form {
     margin: 1vw;
     padding: 5px;
+    display: inline-block;
 }
 
 /* || CONTENT STYLES*/
 .content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
 /* || TABLE STYLES */
 .table_container {
-    overflow-x: auto; /* Додає горизонтальну прокрутку */
+    overflow-x: auto;
     width: 100%;
 }
 
@@ -31,6 +33,10 @@ table {
     border-radius: 5px;
     border-collapse: separate;
     margin: 10px;
+    font-size: 1.5rem;
+    overflow-x: auto;
+    width: auto;
+    display: block;
 
 }
 
@@ -46,6 +52,7 @@ thead tr {
 /* || TABLE CELLS STYLES */
 td {
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 tbody tr:nth-child(odd) {
@@ -79,7 +86,7 @@ button {
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
-    column-count: 2;
+    column-count: 4;
 }
 
 .authorization_box {
@@ -105,20 +112,41 @@ button {
 
 }
 
+/*|| SPAN STYLES*/
+span {
+    font-size: 1rem;
+}
+
+input:invalid ~ span::after {
+    position: absolute;
+    content: "Invalid";
+    padding-top: 5px;
+    padding-left: 5px;
+    color: #8b0000;
+}
+
+input:valid ~ span::after {
+    position: absolute;
+    content: "Valid";
+    padding-top: 5px;
+    padding-left: 5px;
+    color: #009000;
+}
+
 @media only screen and (max-width: 769px)  {
 
 
 
     /* || ADMIN PANEL*/
     .table_container {
-        overflow-x: auto; /* Для горизонтальної прокрутки */
+        overflow-x: auto;
     }
 
     table {
         display: block;
-        min-width: max-content !important; /* Встановлюємо важливий пріоритет */
+
         overflow-x: auto;
-        width: auto; /* Таблиця адаптується під вміст */
+        width: auto;
     }
 
     .icon img {

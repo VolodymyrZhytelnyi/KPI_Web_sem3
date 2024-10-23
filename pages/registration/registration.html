@@ -13,39 +13,46 @@
 <body>
 <div class="content">
     <div class="registration_box">
-        <form action="/register">
+        <form action="/register" id="register1">
             <div class="form">
                 <label for="email">Email</label><br>
-                <input type="email" id="email" name="email"><br>
+                <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+/.[a-zA-Z]+" required><br>
+                <span class="validity"></span><br>
             </div>
 
             <div class="form">
                 <label for="password">Password</label><br>
-                <input type="password" id="password" name="password"><br>
+                <input type="password" id="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&])[A-Za-z\d@$!%#*?&]{8,}$" required><br>
+                <span class="validity"></span><br>
             </div>
 
             <div class="form">
                 <label for="surname">Surname</label><br>
-                <input type="text" id="surname" name="surname"><br>
+                <input type="text" id="surname" name="surname" pattern="[a-zA-Z]+" required><br>
+                <span class="validity"></span><br>
             </div>
 
             <div class="form">
                 <label for="name">Name</label><br>
-                <input type="text" id="name" name="name"><br>
+                <input type="text" id="name" name="name" pattern="[a-zA-Z]+" required><br>
+                <span class="validity"></span><br>
             </div>
 
             <div class="form">
                 <label for="middle_name">Middle name</label><br>
-                <input type="text" id="middle_name" name="middle_name"><br>
+                <input type="text" id="middle_name" name="middle_name" pattern="[a-zA-Z]+" required><br>
+                <span class="validity"></span><br>
             </div>
 
             <div class="form">
                 <label>Gender</label><br>
                 <div class="radio_box">
                     <label for="Male">Male</label>
-                    <input type="radio" id="Male" name="gender" value="Male">
+                    <input type="radio" id="Male" name="gender" value="Male" required>
                     <label for="Female">Female</label>
-                    <input type="radio" id="Female" name="gender" value="Female">
+                    <input type="radio" id="Female" name="gender" value="Female" required><br>
+                    <span class="validity"></span><br>
+
                 </div>
             </div>
 
@@ -53,7 +60,8 @@
 
                 <div class="phone_form">
                     <label for="phone_num">Phone number</label>
-                    <input type="text" id="phone_num" placeholder="+38(0__)-___-__-__">
+                    <input type="text" id="phone_num" placeholder="+38(0__)-___-__-__" pattern=".{18}" required><br>
+                    <span class="validity"></span><br>
 
                     <script>
                         $(document).ready(function(){
@@ -67,12 +75,14 @@
 
             <div class="form">
                 <label for="date">Birthday date</label><br>
-                <input type="date" id="date" name="date"><br>
+                <input type="date" id="date" name="date" required><br>
+                <span class="validity"></span><br>
+
             </div>
 
             <div class="form">
-                <label for="group">Group</label><br>
-                <select id="group" name="group">
+                <label for="group">Group</label>
+                <select id="group" name="group" required>
                     <option value="option1">Group 1</option>
                     <option value="option2">Group 2</option>
                     <option value="option3">Group 3</option>
@@ -80,11 +90,131 @@
                 </select><br>
             </div>
 
-            <div class="form">
-                <label for="file">File</label><br>
-                <input type="file" id="File" name="File"><br>
-            </div>
+<!--            <div class="form">-->
+<!--                <label for="file">File</label><br>-->
+<!--                <input type="file" id="File" name="File" required><br>-->
+<!--                <span class="validity"></span><br>-->
+<!--            </div>-->
+
+            <input type="submit">
         </form>
+
+    </div>
+
+    <div class="information_table_box" >
+        <table id="information_table">
+            <thead>
+            <tr>
+                <th>Вибір</th>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>По-батькові</th>
+                <th>Електронна адреса</th>
+                <th>Пароль</th>
+                <th>Номер телефону</th>
+                <th>Дата народження</th>
+                <th>Стать</th>
+                <th>Група</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <input type="submit" value="Delete" id="delete">
+        <input type="submit" value="Duplicate" id="duplicate">
+
+        <script>
+            let register_form = document.getElementById("register1");
+            const table = document.getElementById("information_table").getElementsByTagName('tbody')[0];
+            const delete_button = document.getElementById("delete");
+            const duplicate_button = document.getElementById("duplicate");
+
+            function add_row() {
+                let email = document.getElementById("email").value;
+                let name = document.getElementById("name").value;
+                let surname = document.getElementById("surname").value;
+                let middle_name = document.getElementById("middle_name").value;
+                let password = document.getElementById("password").value;
+                let gender = document.querySelector('input[name="gender"]:checked').value;
+                let phone_number = document.getElementById("phone_num").value;
+                let b_day = document.getElementById("date").value;
+                let group = document.getElementById("group").value;
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                <td><input type="checkbox" class="row_checkbox"></td>
+                <td>${name}</td>
+                <td>${surname}</td>
+                <td>${middle_name}</td>
+                <td>${email}</td>
+                <td>${password}</td>
+                <td>${phone_number}</td>
+                <td>${b_day}</td>
+                <td>${gender}</td>
+                <td>${group}</td>
+            `;
+
+
+                table.appendChild(row);
+            }
+
+            function delete_rows() {
+                const rows_for_delete = document.querySelectorAll('input.row_checkbox:checked');
+
+                rows_for_delete.forEach(function (checkbox){
+                    const row = checkbox.closest("tr");
+                    row.remove()
+                })
+            }
+
+            function duplicate_rows() {
+                const rows_for_duplicate = document.querySelectorAll('input.row_checkbox:checked');
+
+                rows_for_duplicate.forEach((checkbox) => {
+                    const row = checkbox.closest("tr");
+                    const clonedRow = row.cloneNode(true);
+
+                    const table = document.getElementById("information_table").getElementsByTagName('tbody')[0];
+                    table.appendChild(clonedRow);
+                })
+            }
+
+            function unchecked_checkbox() {
+                const checked_checkbox = document.querySelectorAll("input.row_checkbox:checked");
+
+                checked_checkbox.forEach((element) => {
+                    const checkbox = element.closest("input");
+                    checkbox.checked = false;
+                })
+            }
+
+            function reset_form() {
+                const form_to_reset = document.getElementById("register1");
+                form_to_reset.reset();
+            }
+
+            register_form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                add_row();
+                reset_form();
+            });
+
+            delete_button.addEventListener("click", (e) => {
+                e.preventDefault();
+                delete_rows();
+                unchecked_checkbox();
+            });
+
+
+            duplicate_button.addEventListener("click", (e) => {
+                e.preventDefault();
+                duplicate_rows();
+                unchecked_checkbox();
+            })
+
+
+        </script>
     </div>
 </div>
 </body>
