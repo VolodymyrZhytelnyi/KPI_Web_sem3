@@ -12,7 +12,7 @@
 <body>
 <div class="content" id="app">
     <div class="registration_box">
-        <form action="/register" id="register1" @submit.prevent="validateForm">
+        <form action="/register" ref="registerForm" id="register1" @submit.prevent="validateForm">
             <div class="form">
                 <label for="email">Email</label><br>
                 <input type="email" id="email" name="email" v-model="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+/.[a-zA-Z]+" required><br>
@@ -76,7 +76,7 @@
             </div>
             <div class="form">
                 <label for="file">File</label><br>
-                <input type="file" id="file" ref="fileInput" name="file" @change="updateFileName" required><br>
+                <input type="file" id="file" name="file" @change="updateFileName" required><br>
                 <span class="validity"></span><br>
             </div>
             <input type="submit">
@@ -118,7 +118,7 @@
         </table>
 
         <input type="submit" @click="delete_rows" value="Delete" id="delete">
-        <input type="submit" value="Duplicate" id="duplicate">
+        <input type="submit" @click="duplicateRow" value="Duplicate" id="duplicate">
     </div>
 </div>
 <script>
@@ -135,12 +135,14 @@
             const b_day = ref("")
             const group = ref("")
             const fileName = ref("")
+            isChecked = ref(false)
 
             const fileValue = ref("")
 
             const information = ref([])
 
-            isChecked = ref(false)
+
+            const registerForm = ref(null)
 
             let id = 0
 
@@ -175,13 +177,42 @@
             }
 
             function clearForm() {
+                registerForm.value.reset()
                 email.value = ''
-                this.$refs.fileInput.value = null  // Скинути значення file input
+                password.value = ''
+                name.value = ''
+                surname.value = ''
+                middle_name.value = ''
+                phone_number.value = ''
             }
 
             function delete_rows() {
                 information.value = information.value.filter((row) => {if (row.isChecked !== true) {return row}} )
             }
+
+            function duplicateRow() {
+                information.value.forEach((row) => {
+                    if (row.isChecked === true) {
+                        information.value.push({
+                            id: id++,
+                            name: row.name,
+                            surname: row.surname,
+                            middle_name: row.middle_name,
+                            email: row.email,
+                            password: row.password,
+                            phone_number: row.phone_number,
+                            b_day: row.b_day,
+                            gender: row.gender,
+                            group: row.group,
+                            fileName: row.fileName,
+                            isChecked: false // Новий рядок не відзначений як перевірений
+                        });
+                        row.isChecked = false;
+
+                    }
+                });
+            }
+
 
 
             return {
@@ -201,7 +232,8 @@
                 validateForm,
                 isChecked,
                 delete_rows,
-                fileValue
+                registerForm,
+                duplicateRow
             }
 
         }
